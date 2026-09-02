@@ -1,0 +1,2653 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="theme-color" content="#080b16">
+<meta name="description" content="The Distance Between Two Hearts — a story of love, memories, distance and everything in between.">
+<title>The Distance Between Two Hearts</title>
+
+<style>
+:root{
+  --bg:#070a13;
+  --bg2:#10182a;
+  --card:rgba(17,22,39,.88);
+  --card2:rgba(10,15,28,.94);
+  --rose:#d98ca0;
+  --rose2:#efb1c0;
+  --gold:#d8b06a;
+  --cream:#fff8ee;
+  --text:#f5f1ed;
+  --muted:#aaa8b1;
+  --line:rgba(255,255,255,.1);
+  --shadow:0 30px 90px rgba(0,0,0,.55);
+}
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  min-height:100vh;
+  overflow-x:hidden;
+  color:var(--text);
+  font-family:Georgia,"Times New Roman",serif;
+  background:
+    radial-gradient(circle at 15% 15%,rgba(217,140,160,.10),transparent 30%),
+    radial-gradient(circle at 85% 80%,rgba(216,176,106,.08),transparent 30%),
+    linear-gradient(135deg,var(--bg),var(--bg2));
+}
+
+button,input,textarea{
+  font:inherit;
+}
+
+button{
+  cursor:pointer;
+}
+
+.hidden{
+  display:none!important;
+}
+
+/* ===============================
+   PARTICLES
+================================ */
+
+#particles{
+  position:fixed;
+  inset:0;
+  z-index:0;
+  overflow:hidden;
+  pointer-events:none;
+}
+
+.particle{
+  position:absolute;
+  width:3px;
+  height:3px;
+  border-radius:50%;
+  background:rgba(255,255,255,.5);
+  animation:float linear infinite;
+}
+
+@keyframes float{
+  from{
+    transform:translateY(105vh);
+    opacity:0;
+  }
+  15%{opacity:.7}
+  85%{opacity:.7}
+  to{
+    transform:translateY(-10vh);
+    opacity:0;
+  }
+}
+
+/* ===============================
+   GENERAL
+================================ */
+
+.screen{
+  position:relative;
+  z-index:1;
+  min-height:100vh;
+}
+
+.eyebrow{
+  color:var(--gold);
+  text-transform:uppercase;
+  letter-spacing:5px;
+  font-size:.7rem;
+}
+
+.divider{
+  width:80px;
+  height:1px;
+  margin:24px auto;
+  background:var(--gold);
+}
+
+.primary-btn{
+  border:0;
+  padding:14px 28px;
+  border-radius:999px;
+  color:white;
+  background:linear-gradient(135deg,var(--rose),#a65c76);
+  box-shadow:0 12px 35px rgba(217,140,160,.2);
+  transition:.3s;
+}
+
+.primary-btn:hover{
+  transform:translateY(-2px);
+  box-shadow:0 18px 45px rgba(217,140,160,.35);
+}
+
+/* ===============================
+   PASSWORD PAGE
+================================ */
+
+.landing{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  min-height:100vh;
+  padding:30px;
+  text-align:center;
+}
+
+.landing-inner{
+  width:min(760px,100%);
+  animation:fadeUp 1s ease both;
+}
+
+.landing h1{
+  margin:22px 0;
+  font-size:clamp(2.5rem,6vw,5.5rem);
+  line-height:1.05;
+  font-weight:400;
+}
+
+.subtitle{
+  max-width:650px;
+  margin:0 auto 38px;
+  color:var(--muted);
+  line-height:1.8;
+  font-size:1.05rem;
+}
+
+.password-card{
+  width:min(430px,100%);
+  margin:auto;
+  padding:30px;
+  border:1px solid var(--line);
+  border-radius:24px;
+  background:rgba(10,14,27,.82);
+  backdrop-filter:blur(20px);
+  box-shadow:var(--shadow);
+}
+
+.password-card h2{
+  margin-bottom:18px;
+  font-size:1.05rem;
+  font-weight:400;
+}
+
+.password-card input{
+  width:100%;
+  padding:15px;
+  border:1px solid var(--line);
+  border-radius:12px;
+  outline:none;
+  background:rgba(255,255,255,.05);
+  color:white;
+  text-align:center;
+  letter-spacing:4px;
+}
+
+.password-card input:focus{
+  border-color:var(--rose);
+  box-shadow:0 0 25px rgba(217,140,160,.15);
+}
+
+.hint{
+  margin:13px 0 21px;
+  color:var(--muted);
+  font-size:.78rem;
+}
+
+.error{
+  min-height:20px;
+  margin-top:13px;
+  color:var(--rose2);
+  font-size:.8rem;
+}
+
+.shake{
+  animation:shake .4s ease;
+}
+
+@keyframes shake{
+  20%{transform:translateX(-7px)}
+  40%{transform:translateX(7px)}
+  60%{transform:translateX(-5px)}
+  80%{transform:translateX(5px)}
+}
+
+/* ===============================
+   STORY INDEX
+================================ */
+
+.story-index{
+  width:min(1250px,94%);
+  margin:auto;
+  padding:70px 0;
+}
+
+.index-header{
+  margin-bottom:50px;
+  text-align:center;
+}
+
+.index-header h1{
+  margin-top:18px;
+  font-size:clamp(2.4rem,5vw,4.5rem);
+  font-weight:400;
+}
+
+.index-header p{
+  color:var(--muted);
+  line-height:1.7;
+}
+
+.chapter-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:22px;
+}
+
+.chapter-card{
+  position:relative;
+  min-height:330px;
+  overflow:hidden;
+  border:1px solid var(--line);
+  border-radius:20px;
+  background:#0d1221;
+  cursor:pointer;
+  transition:.4s;
+}
+
+.chapter-card:hover{
+  transform:translateY(-7px);
+  border-color:rgba(217,140,160,.35);
+  box-shadow:0 25px 60px rgba(0,0,0,.45);
+}
+
+.chapter-card img{
+  width:100%;
+  height:100%;
+  min-height:330px;
+  display:block;
+  object-fit:cover;
+  transition:.6s;
+}
+
+.chapter-card:hover img{
+  transform:scale(1.05);
+}
+
+.card-overlay{
+  position:absolute;
+  inset:0;
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-end;
+  padding:25px;
+  background:linear-gradient(
+    to top,
+    rgba(4,7,15,.98),
+    rgba(4,7,15,.45),
+    transparent
+  );
+}
+
+.card-number{
+  margin-bottom:8px;
+  color:var(--gold);
+  font-size:.7rem;
+  letter-spacing:3px;
+}
+
+.card-overlay h2{
+  margin-bottom:8px;
+  font-size:1.35rem;
+  font-weight:400;
+}
+
+.card-overlay p{
+  color:#c5c1c4;
+  font-size:.84rem;
+  line-height:1.5;
+}
+
+.read-label{
+  margin-top:15px;
+  color:var(--rose2);
+  font-size:.72rem;
+  letter-spacing:2px;
+}
+
+/* ===============================
+   SPECIAL PAGE CARD
+================================ */
+
+.special-card{
+  min-height:330px;
+  position:relative;
+  overflow:hidden;
+  border:1px solid rgba(216,176,106,.2);
+  border-radius:20px;
+  background:
+    radial-gradient(circle at 50% 30%,rgba(217,140,160,.18),transparent 35%),
+    linear-gradient(145deg,#171329,#0a1020);
+  cursor:pointer;
+  transition:.4s;
+}
+
+.special-card:hover{
+  transform:translateY(-7px);
+  box-shadow:0 25px 60px rgba(0,0,0,.45);
+  border-color:rgba(216,176,106,.4);
+}
+
+.special-card-content{
+  position:absolute;
+  inset:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-direction:column;
+  text-align:center;
+  padding:30px;
+}
+
+.special-icon{
+  margin-bottom:20px;
+  font-size:3rem;
+  filter:drop-shadow(0 0 20px rgba(217,140,160,.4));
+}
+
+.special-card h2{
+  margin-bottom:10px;
+  font-weight:400;
+}
+
+.special-card p{
+  max-width:270px;
+  color:var(--muted);
+  line-height:1.6;
+  font-size:.84rem;
+}
+
+/* ===============================
+   CHAPTER READER
+================================ */
+
+.chapter-view{
+  min-height:100vh;
+  padding:20px;
+}
+
+.chapter-topbar,
+.chapter-navigation{
+  width:min(1450px,100%);
+  margin:auto;
+}
+
+.chapter-topbar{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  margin-bottom:15px;
+}
+
+.back-btn,
+.nav-btn{
+  padding:11px 18px;
+  border:1px solid var(--line);
+  border-radius:999px;
+  background:rgba(255,255,255,.04);
+  color:var(--text);
+  transition:.3s;
+}
+
+.back-btn:hover,
+.nav-btn:hover{
+  background:rgba(255,255,255,.08);
+}
+
+.progress{
+  color:var(--muted);
+  font-size:.7rem;
+  letter-spacing:2px;
+}
+
+.chapter-layout{
+  width:min(1450px,100%);
+  min-height:calc(100vh - 120px);
+  margin:auto;
+  display:grid;
+  grid-template-columns:minmax(300px,42%) minmax(0,58%);
+  gap:24px;
+}
+
+.chapter-art{
+  min-height:650px;
+  position:relative;
+  overflow:hidden;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border:1px solid var(--line);
+  border-radius:25px;
+  background:#040711;
+  box-shadow:var(--shadow);
+}
+
+.chapter-art img{
+  width:100%;
+  height:100%;
+  display:block;
+  object-fit:contain;
+}
+
+.art-shade{
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  background:linear-gradient(
+    90deg,
+    transparent 65%,
+    rgba(8,11,22,.4)
+  );
+}
+
+.story-panel{
+  min-height:650px;
+  max-height:calc(100vh - 120px);
+  overflow-y:auto;
+  padding:clamp(28px,4vw,65px);
+  border:1px solid var(--line);
+  border-radius:25px;
+  background:
+    linear-gradient(145deg,rgba(19,25,45,.95),rgba(9,14,27,.95));
+  box-shadow:var(--shadow);
+}
+
+.chapter-kicker{
+  margin-bottom:15px;
+  color:var(--gold);
+  text-transform:uppercase;
+  letter-spacing:4px;
+  font-size:.7rem;
+}
+
+.story-panel h1{
+  margin-bottom:30px;
+  font-size:clamp(2rem,4vw,4rem);
+  line-height:1.08;
+  font-weight:400;
+}
+
+.story{
+  max-width:760px;
+}
+
+.story p{
+  margin-bottom:22px;
+  color:#ddd9d5;
+  font-size:1.04rem;
+  line-height:1.95;
+}
+
+.story p.emphasis{
+  color:var(--rose2);
+  font-size:1.22rem;
+  font-style:italic;
+  line-height:1.7;
+}
+
+.chapter-navigation{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:15px;
+  margin-top:15px;
+}
+
+.nav-btn:disabled{
+  opacity:.25;
+  cursor:not-allowed;
+}
+
+/* ===============================
+   WHAT I THINK ABOUT HER
+================================ */
+
+.about-page{
+  position:relative;
+  min-height:100vh;
+  overflow:hidden;
+  padding:45px 20px 70px;
+  background:
+    radial-gradient(circle at 50% 20%,rgba(217,140,160,.14),transparent 32%),
+    radial-gradient(circle at 15% 80%,rgba(216,176,106,.08),transparent 25%),
+    linear-gradient(135deg,#0a0915,#121326 55%,#090d19);
+}
+
+/* Peacock feathers */
+
+.feather{
+  position:absolute;
+  width:180px;
+  height:420px;
+  opacity:.12;
+  pointer-events:none;
+  filter:blur(.2px);
+  animation:featherFloat 12s ease-in-out infinite;
+}
+
+.feather::before{
+  content:"";
+  position:absolute;
+  left:50%;
+  bottom:0;
+  width:3px;
+  height:100%;
+  transform:translateX(-50%) rotate(-12deg);
+  background:linear-gradient(
+    to top,
+    transparent,
+    rgba(216,176,106,.8)
+  );
+  border-radius:100%;
+}
+
+.feather::after{
+  content:"";
+  position:absolute;
+  top:15px;
+  left:50%;
+  width:95px;
+  height:145px;
+  transform:translateX(-50%) rotate(-12deg);
+  border-radius:50% 50% 45% 45%;
+  background:
+    radial-gradient(
+      ellipse at center,
+      #d8b06a 0 7%,
+      #4e7b88 8% 18%,
+      #283f72 19% 31%,
+      #172b4b 32% 47%,
+      transparent 48%
+    );
+  box-shadow:
+    0 0 35px rgba(216,176,106,.15);
+}
+
+.feather.one{
+  left:2%;
+  top:8%;
+  transform:rotate(-20deg);
+}
+
+.feather.two{
+  right:2%;
+  top:15%;
+  transform:scaleX(-1) rotate(-15deg);
+  animation-delay:-4s;
+}
+
+.feather.three{
+  left:12%;
+  bottom:-80px;
+  transform:scale(.7) rotate(20deg);
+  animation-delay:-7s;
+}
+
+.feather.four{
+  right:10%;
+  bottom:-100px;
+  transform:scale(.65) rotate(-20deg);
+  animation-delay:-2s;
+}
+
+@keyframes featherFloat{
+  0%,100%{
+    translate:0 0;
+    rotate:0deg;
+  }
+  50%{
+    translate:0 -25px;
+    rotate:3deg;
+  }
+}
+
+.about-container{
+  position:relative;
+  z-index:2;
+  width:min(900px,100%);
+  margin:auto;
+}
+
+.about-header{
+  margin-bottom:40px;
+  text-align:center;
+}
+
+.about-header h1{
+  margin-top:18px;
+  font-size:clamp(2.4rem,6vw,5rem);
+  font-weight:400;
+  line-height:1.05;
+}
+
+.about-header p{
+  margin-top:18px;
+  color:var(--muted);
+  line-height:1.7;
+}
+
+.memory-card{
+  position:relative;
+  padding:clamp(28px,5vw,60px);
+  border:1px solid rgba(255,255,255,.1);
+  border-radius:28px;
+  background:
+    linear-gradient(
+      145deg,
+      rgba(22,25,48,.9),
+      rgba(9,13,25,.93)
+    );
+  backdrop-filter:blur(18px);
+  box-shadow:
+    0 35px 100px rgba(0,0,0,.5),
+    inset 0 1px 0 rgba(255,255,255,.04);
+  animation:cardReveal 1s ease both;
+}
+
+@keyframes cardReveal{
+  from{
+    opacity:0;
+    transform:translateY(25px);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+.quote-mark{
+  color:var(--rose);
+  font-size:4rem;
+  line-height:.5;
+  opacity:.5;
+}
+
+.personal-text{
+  margin-top:25px;
+}
+
+.personal-text p{
+  margin-bottom:25px;
+  color:#e1ddda;
+  font-size:1.08rem;
+  line-height:2;
+}
+
+.personal-text .highlight{
+  color:var(--rose2);
+}
+
+.heart-line{
+  margin:35px auto;
+  text-align:center;
+  color:var(--rose2);
+  font-size:1.1rem;
+  letter-spacing:5px;
+}
+
+.about-footer{
+  margin-top:35px;
+  color:var(--muted);
+  text-align:center;
+  font-size:.9rem;
+  font-style:italic;
+}
+
+/* heart particles */
+
+.heart-particle{
+  position:absolute;
+  color:rgba(239,177,192,.5);
+  font-size:12px;
+  pointer-events:none;
+  animation:heartFloat 8s linear infinite;
+}
+
+@keyframes heartFloat{
+  from{
+    transform:translateY(100vh) rotate(0deg);
+    opacity:0;
+  }
+  15%{opacity:.7}
+  85%{opacity:.7}
+  to{
+    transform:translateY(-20vh) rotate(30deg);
+    opacity:0;
+  }
+}
+
+/* ===============================
+   REVIEWS
+================================ */
+
+.review-section{
+  margin-top:28px;
+  padding:clamp(25px,4vw,45px);
+  border:1px solid var(--line);
+  border-radius:25px;
+  background:rgba(8,12,24,.62);
+  box-shadow:0 20px 60px rgba(0,0,0,.3);
+}
+
+.review-section h2{
+  margin-bottom:8px;
+  font-size:1.6rem;
+  font-weight:400;
+}
+
+.review-subtitle{
+  margin-bottom:22px;
+  color:var(--muted);
+  font-size:.88rem;
+}
+
+.review-form{
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+}
+
+.review-form textarea{
+  width:100%;
+  min-height:120px;
+  resize:vertical;
+  padding:16px;
+  border:1px solid var(--line);
+  border-radius:15px;
+  outline:none;
+  background:rgba(255,255,255,.04);
+  color:white;
+  line-height:1.6;
+}
+
+.review-form textarea:focus{
+  border-color:var(--rose);
+}
+
+.review-submit{
+  align-self:flex-start;
+}
+
+.review-list{
+  display:flex;
+  flex-direction:column;
+  gap:14px;
+  margin-top:28px;
+}
+
+.review{
+  padding:18px;
+  border:1px solid rgba(255,255,255,.07);
+  border-radius:16px;
+  background:rgba(255,255,255,.035);
+  animation:fadeUp .5s ease both;
+}
+
+.review-meta{
+  display:flex;
+  justify-content:space-between;
+  gap:15px;
+  margin-bottom:8px;
+}
+
+.review-meta strong{
+  color:var(--rose2);
+  font-size:.85rem;
+  font-weight:400;
+}
+
+.review-meta span{
+  color:#777883;
+  font-size:.7rem;
+}
+
+.review p{
+  color:#d4d0cf;
+  font-size:.9rem;
+  line-height:1.7;
+  white-space:pre-wrap;
+}
+
+.no-reviews{
+  color:#777883;
+  font-size:.85rem;
+  font-style:italic;
+}
+
+/* ===============================
+   TRANSITION
+================================ */
+
+#transition{
+  position:fixed;
+  inset:0;
+  z-index:9999;
+  pointer-events:none;
+  opacity:0;
+  background:#02040a;
+  transition:opacity .35s ease;
+}
+
+#transition.active{
+  opacity:1;
+}
+
+/* ===============================
+   ANIMATION
+================================ */
+
+.fade-in{
+  animation:fadeUp .65s ease both;
+}
+
+@keyframes fadeUp{
+  from{
+    opacity:0;
+    transform:translateY(22px);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+/* ===============================
+   RESPONSIVE
+================================ */
+
+@media(max-width:1000px){
+
+  .chapter-grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .chapter-layout{
+    grid-template-columns:38% 62%;
+    gap:14px;
+  }
+
+  .chapter-art,
+  .story-panel{
+    min-height:600px;
+  }
+}
+
+@media(max-width:700px){
+
+  .chapter-grid{
+    grid-template-columns:1fr;
+  }
+
+  .landing{
+    padding:20px;
+  }
+
+  .landing h1{
+    font-size:2.6rem;
+  }
+
+  .chapter-view{
+    padding:10px;
+  }
+
+  /*
+     IMAGE ALWAYS REMAINS BESIDE STORY.
+     It is never placed underneath the chapter text.
+  */
+
+  .chapter-layout{
+    grid-template-columns:34% 66%;
+    gap:8px;
+    min-height:calc(100vh - 105px);
+  }
+
+  .chapter-art{
+    min-height:600px;
+    border-radius:15px;
+  }
+
+  .story-panel{
+    min-height:600px;
+    max-height:calc(100vh - 105px);
+    padding:20px 15px;
+    border-radius:15px;
+  }
+
+  .chapter-panel h1{
+    font-size:1.5rem;
+  }
+
+  .story-panel h1{
+    font-size:1.5rem;
+    margin-bottom:20px;
+  }
+
+  .story p{
+    font-size:.83rem;
+    line-height:1.72;
+    margin-bottom:17px;
+  }
+
+  .story p.emphasis{
+    font-size:.98rem;
+  }
+
+  .chapter-kicker{
+    font-size:.55rem;
+    letter-spacing:2px;
+  }
+
+  .progress{
+    font-size:.55rem;
+  }
+
+  .back-btn,
+  .nav-btn{
+    padding:8px 11px;
+    font-size:.7rem;
+  }
+
+  .about-page{
+    padding:35px 14px 55px;
+  }
+
+  .memory-card{
+    border-radius:22px;
+  }
+
+  .personal-text p{
+    font-size:.98rem;
+    line-height:1.85;
+  }
+
+  .feather{
+    opacity:.08;
+    transform:scale(.65);
+  }
+}
+
+@media(prefers-reduced-motion:reduce){
+
+  *,
+  *::before,
+  *::after{
+    animation-duration:.01ms!important;
+    animation-iteration-count:1!important;
+    scroll-behavior:auto!important;
+    transition-duration:.01ms!important;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div id="particles"></div>
+<div id="transition"></div>
+
+
+<!-- =====================================================
+     PASSWORD PAGE
+====================================================== -->
+
+<section id="landing" class="screen landing">
+
+  <div class="landing-inner">
+
+    <div class="eyebrow">
+      A Romantic Memory Story
+    </div>
+
+    <h1>
+      The Distance Between Two Hearts
+    </h1>
+
+    <p class="subtitle">
+      Some stories begin with a glance,
+      grow through conversations,
+      survive distance,
+      and become memories that never really leave.
+    </p>
+
+    <div id="passwordCard" class="password-card">
+
+      <h2>
+        Enter the secret to begin
+      </h2>
+
+      <input
+        id="passwordInput"
+        type="password"
+        placeholder="Enter password"
+        autocomplete="off"
+        aria-label="Story password"
+      >
+
+      <div class="hint">
+        Hint — the confession date
+      </div>
+
+      <button
+        id="enterBtn"
+        class="primary-btn"
+        type="button"
+      >
+        ENTER THE STORY
+      </button>
+
+      <div
+        id="passwordError"
+        class="error"
+        aria-live="polite"
+      ></div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =====================================================
+     STORY INDEX
+====================================================== -->
+
+<section
+  id="storyIndex"
+  class="screen story-index hidden"
+>
+
+  <header class="index-header">
+
+    <div class="eyebrow">
+      The Distance Between Two Hearts
+    </div>
+
+    <h1>
+      THE STORY OF US
+    </h1>
+
+    <div class="divider"></div>
+
+    <p>
+      Every chapter was a moment.
+      Every moment became a memory.
+    </p>
+
+  </header>
+
+  <div
+    id="chapterGrid"
+    class="chapter-grid"
+  ></div>
+
+</section>
+
+
+<!-- =====================================================
+     CHAPTER READER
+====================================================== -->
+
+<section
+  id="chapterView"
+  class="screen chapter-view hidden"
+>
+
+  <div class="chapter-topbar">
+
+    <button
+      id="backToStory"
+      class="back-btn"
+      type="button"
+    >
+      ← Back to Story
+    </button>
+
+    <div
+      id="progress"
+      class="progress"
+    >
+      CHAPTER 01 / 16
+    </div>
+
+  </div>
+
+  <main class="chapter-layout">
+
+    <div class="chapter-art">
+
+      <img
+        id="chapterImage"
+        src=""
+        alt=""
+      >
+
+      <div class="art-shade"></div>
+
+    </div>
+
+    <article
+      id="storyPanel"
+      class="story-panel"
+    >
+
+      <div
+        id="chapterKicker"
+        class="chapter-kicker"
+      >
+        CHAPTER 1
+      </div>
+
+      <h1 id="chapterTitle"></h1>
+
+      <div
+        id="storyContent"
+        class="story"
+      ></div>
+
+    </article>
+
+  </main>
+
+  <div class="chapter-navigation">
+
+    <button
+      id="prevBtn"
+      class="nav-btn"
+      type="button"
+    >
+      ← Previous
+    </button>
+
+    <button
+      id="nextBtn"
+      class="nav-btn"
+      type="button"
+    >
+      Next →
+    </button>
+
+  </div>
+
+</section>
+
+
+<!-- =====================================================
+     WHAT I THINK ABOUT HER
+====================================================== -->
+
+<section
+  id="aboutPage"
+  class="screen about-page hidden"
+>
+
+  <!-- Peacock feathers -->
+
+  <div class="feather one"></div>
+  <div class="feather two"></div>
+  <div class="feather three"></div>
+  <div class="feather four"></div>
+
+  <div class="about-container">
+
+    <div class="chapter-topbar">
+
+      <button
+        id="aboutBack"
+        class="back-btn"
+        type="button"
+      >
+        ← Back to Story
+      </button>
+
+      <div class="progress">
+        A LITTLE SOMETHING
+      </div>
+
+    </div>
+
+
+    <header class="about-header">
+
+      <div class="eyebrow">
+        From My Side of the Story
+      </div>
+
+      <h1>
+        WHAT I THINK<br>
+        ABOUT HER
+      </h1>
+
+      <div class="divider"></div>
+
+      <p>
+        Maybe I don't have the perfect words.
+        But I know how she makes me feel.
+      </p>
+
+    </header>
+
+
+    <article class="memory-card">
+
+      <div class="quote-mark">
+        “
+      </div>
+
+      <div class="personal-text">
+
+        <p>
+          Sach bolun toh, mujhe nahi pata main usko perfectly
+          kaise describe karun. Like, jab bhi main usko dekhta hoon,
+          pata nahi kyun, but woh mujhe ekdum
+          <span class="highlight">beautiful</span> lagti hai.
+          Kabhi kabhi toh aisa lagta hai jaise koi angel
+          Earth pe aa gaya ho.
+        </p>
+
+        <p>
+          Aur sirf uski looks ki baat nahi hai. Uska cute sa
+          behavior, uski little expressions, jis tarah woh chhoti
+          chhoti cheezein karti hai... mujhe woh sab bahut pasand hai.
+          Pata nahi, woh jab apne normal way mein behave karti hai,
+          tab bhi mujhe somehow woh bahut cute lagti hai.
+        </p>
+
+        <p>
+          But agar mujhe ek cheez choose karni ho jo mujhe usmein
+          sabse zyada pasand hai, toh probably
+          <span class="highlight">uski eyes</span>.
+          Uski eyes ekdum expressive hain. Aisa lagta hai jaise
+          woh hamesha thodi si shine karti rehti hain.
+          Aur main jab uski eyes mein dekhta hoon na,
+          toh bas... pata nahi.
+          <span class="highlight">
+            Fida ho jaata hoon us pe.
+          </span>
+          Har baar thoda sa aur.
+        </p>
+
+        <p>
+          Waise uski height 5'3" hai, jo honestly bilkul perfect hai.
+          But pata nahi kyun, mere saamne woh phir bhi
+          <span class="highlight">itni si</span> hi lagti hai.
+          Bas ye meri taraf se thoda sa cute sa mazaak hai —
+          height ko lekar koi complaint bilkul nahi.
+        </p>
+
+        <p>
+          Uske kuch naam maine apne liye rakhe hain...
+          woh main yahan disclose nahi karunga.
+          Kuch cheezein private hi achhi lagti hain.
+          Aur honestly, uska jo actual naam hai na,
+          mujhe woh bhi bahut achha lagta hai.
+          Uska naam screen pe dikh jaaye,
+          ya bas uske baare mein sochun,
+          toh ek alag si happiness feel hoti hai.
+        </p>
+
+        <div class="heart-line">
+          · · ♥ · ·
+        </div>
+
+        <p>
+          Shayad main usko perfectly describe kabhi na kar paun.
+          Main uski smile ki baat kar sakta hoon, eyes ki,
+          uske behavior ki, uski voice ki, uski little habits ki,
+          aur countless chhoti chhoti cheezon ki.
+          But end mein simple answer shayad yehi hai —
+          <span class="highlight">
+            whenever I see her, I just feel happy.
+          </span>
+        </p>
+
+      </div>
+
+      <div class="about-footer">
+        Some feelings are easier to feel than to explain.
+      </div>
+
+    </article>
+
+
+    <!-- REVIEW SECTION -->
+
+    <section class="review-section">
+
+      <h2>
+        Leave a Review
+      </h2>
+
+      <p class="review-subtitle">
+        Tell me what you felt after reading the story.
+      </p>
+
+      <form
+        id="reviewForm"
+        class="review-form"
+      >
+
+        <textarea
+          id="reviewInput"
+          maxlength="1000"
+          placeholder="Write your thoughts..."
+          required
+          aria-label="Write your review"
+        ></textarea>
+
+        <button
+          class="primary-btn review-submit"
+          type="submit"
+        >
+          POST REVIEW
+        </button>
+
+      </form>
+
+      <div
+        id="reviewList"
+        class="review-list"
+      ></div>
+
+    </section>
+
+  </div>
+
+</section>
+
+
+<script>
+
+/* =====================================================
+   CONFIGURATION
+====================================================== */
+
+/*
+   PASSWORD UPDATED:
+   30082024
+*/
+
+const CORRECT_PASSWORD = "30082024";
+
+
+/*
+   EXACT IMAGE MAPPING
+*/
+
+const chapters = [
+
+  {
+    number:1,
+    title:"The Wedding",
+    image:"image1.png",
+    description:"The moment two strangers first noticed each other.",
+    paragraphs:[
+      "The wedding hall was filled with noise.",
+      "Music. Laughter. Relatives calling each other's names. Children running between tables. The smell of food drifting through the crowded hall.",
+      "And somewhere inside all that chaos—he saw her.",
+      "Not in some dramatic, slow-motion anime moment. There was no magical music. No sudden realization.",
+      "Just a glance.",
+      "He looked. She looked. Their eyes met for a second. Then both looked away.",
+      "Who was she? That was the first thought that crossed his mind.",
+      "Nothing more. At least, that's what he told himself.",
+      "Later that evening, they happened to cross paths again. A small smile. A brief conversation. Nothing that seemed important. Nothing that seemed like the beginning of a story.",
+      "But sometimes the most important chapters begin with moments that don't look important at all.",
+      "Neither of them knew it yet.",
+      "They would leave that wedding as strangers. But someday, years later, they would remember—",
+      "that was where everything started."
+    ]
+  },
+
+  {
+    number:2,
+    title:"Two Different Worlds",
+    image:"image2.png",
+    description:"A message turns a forgotten meeting into something new.",
+    paragraphs:[
+      "Months passed. Life continued. The wedding became a memory.",
+      "Until one ordinary day—a notification appeared on his phone.",
+      "A message.",
+      "From her.",
+      "At first, the conversation was simple. A few messages. A reply. Another reply. Then another.",
+      "The distance between them was enormous.",
+      "Different states. Different cities. Different routines. Different lives.",
+      "But somehow, their phones made the distance feel smaller.",
+      "Instagram became their meeting place. WhatsApp became their diary. Snapchat became a collection of random moments.",
+      "And phone calls became their way of sitting beside each other without actually being together.",
+      "Neither of them planned it.",
+      "They simply started talking.",
+      "And then—they didn't stop."
+    ]
+  },
+
+  {
+    number:3,
+    title:"Strangers to Friends",
+    image:"image3.png",
+    description:"Minutes became hours, and strangers became friends.",
+    paragraphs:[
+      "Their conversations became longer.",
+      "First, minutes. Then hours.",
+      "They started sending each other random things. Memes. Photos. Stories about their day. Stupid jokes that made no sense to anyone else.",
+      "Arguments about completely meaningless things.",
+      "And somehow—they understood each other.",
+      "Their personalities matched. Their humor matched. Their energy matched.",
+      "Sometimes one would say something and the other would respond: Bro, I was literally about to say that.",
+      "They laughed about it.",
+      "They started waiting for each other's messages.",
+      "Then looking forward to them.",
+      "Then needing them.",
+      "Without realizing it, they had crossed the invisible line between—",
+      "strangers and friends."
+    ]
+  },
+
+  {
+    number:4,
+    title:"Best Friends",
+    image:"image4.png",
+    description:"The friendship slowly became something deeper.",
+    paragraphs:[
+      "Friendship slowly became something deeper.",
+      "He began telling her things he didn't tell everyone. She did the same.",
+      "They talked about their dreams. Their fears. Their families. Their bad days. Their good days. Their insecurities. Their future.",
+      "Sometimes there wasn't even anything important to say.",
+      "They would simply stay on call. One doing something. The other doing something else.",
+      "Neither needing to fill the silence.",
+      "That was when he realized something.",
+      "She wasn't just a friend anymore.",
+      "She had become—his person.",
+      "His bestie.",
+      "The person he wanted to tell everything to.",
+      "If something good happened—he wanted to tell her.",
+      "If something bad happened—he wanted to tell her.",
+      "If something completely stupid happened—he still wanted to tell her.",
+      "And somewhere on the other side of the screen, she had begun doing the same.",
+      "They didn't know where this friendship was going.",
+      "But they knew one thing.",
+      "They didn't want to lose it."
+    ]
+  },
+
+  {
+    number:5,
+    title:"Silence",
+    image:"image5.png",
+    description:"Sometimes distance begins with nothing more than silence.",
+    paragraphs:[
+      "Then—everything stopped.",
+      "No dramatic goodbye. No final conversation.",
+      "Just silence.",
+      "Messages became fewer. Then disappeared. Calls stopped. The notifications stopped.",
+      "The person who had become part of his everyday life suddenly wasn't there.",
+      "At first, he thought: We'll talk again.",
+      "Then days became weeks. Weeks became months.",
+      "And eventually, the silence became normal.",
+      "Except—it never really felt normal.",
+      "He would open his phone without thinking. Look at the chat. Close it. Open it again.",
+      "Sometimes he'd scroll through old conversations. Read jokes they'd forgotten. Look at old pictures.",
+      "Remember calls that had lasted until both of them fell asleep.",
+      "And wonder: How did someone become such a big part of my life… and then disappear?",
+      "She probably had her own reasons. He had his own.",
+      "But neither knew how to bridge the distance.",
+      "So they remained apart.",
+      "Two people who once talked every day—now living as if they had never known each other."
+    ]
+  },
+
+  {
+    number:6,
+    title:"Finding Each Other Again",
+    image:"image6.png",
+    description:"After months of silence, one message changes everything.",
+    paragraphs:[
+      "Months later—a message appeared.",
+      "His heart stopped for a moment.",
+      "It was her.",
+      "He stared at the screen. He didn't know what to type. Neither did she.",
+      "Eventually, one message became two.",
+      "Two became ten.",
+      "Ten became hours.",
+      "And somehow—they were laughing again.",
+      "It wasn't exactly the same.",
+      "There was history now. There was pain. There were unanswered questions.",
+      "But there was also something stronger.",
+      "They had found each other again.",
+      "Their friendship returned.",
+      "Then became even deeper.",
+      "This time, both understood how easily they could lose each other.",
+      "And perhaps that was why they held on tighter."
+    ]
+  },
+
+  {
+    number:7,
+    title:"31st August, 2:00 AM",
+    image:"image7.png",
+    description:"Two screens glow in the darkness. One confession changes everything.",
+    paragraphs:[
+      "31st August.",
+      "2:00 AM.",
+      "The world was asleep.",
+      "But two phone screens were still glowing.",
+      "The room around him was dark. Only the light from the screen touched his face.",
+      "She was on the other side. Miles away.",
+      "Yet somehow—it felt like she was sitting right beside him.",
+      "They were talking. About everything. About them. About the past. About what they meant to each other.",
+      "There was a pause. A long one.",
+      "The kind of silence that feels louder than words.",
+      "He typed something. Deleted it. Typed again. Deleted it again.",
+      "His heart was racing.",
+      "Finally—he stopped thinking.",
+      "And told her the truth.",
+      "He loved her.",
+      "For a few seconds—nothing.",
+      "No reply.",
+      "His heart sank.",
+      "Then—the notification appeared.",
+      "She felt the same.",
+      "He stared at the message. Read it once. Twice. Again.",
+      "A smile slowly appeared on his face.",
+      "Two people. Two different states. Two different rooms. One confession.",
+      "And at 2:00 AM on 31st August—their friendship changed forever.",
+      "They weren't just best friends anymore.",
+      "They were together."
+    ]
+  },
+
+  {
+    number:8,
+    title:"Love Through a Screen",
+    image:"image8.png",
+    description:"Their relationship becomes ordinary—and somehow beautiful.",
+    paragraphs:[
+      "Love didn't suddenly become perfect.",
+      "It became ordinary.",
+      "And somehow, that made it beautiful.",
+      "Good morning.",
+      "Have you eaten?",
+      "How's your health?",
+      "Don't stay awake too late.",
+      "Call me when you're free.",
+      "Good night.",
+      "They learned each other's routines.",
+      "He knew when she was tired. She knew when something was wrong with him even when he said: I'm fine.",
+      "They prayed for each other. Supported each other's dreams. Celebrated small victories.",
+      "Comforted each other during difficult days.",
+      "Sometimes they fought over tiny things. Sometimes they misunderstood each other.",
+      "But they always came back to talking.",
+      "Because distance was already difficult enough.",
+      "They couldn't afford to let silence become another distance between them.",
+      "Their relationship existed through technology—but the feelings were real.",
+      "The screen was only the medium.",
+      "The connection was real."
+    ]
+  },
+
+  {
+    number:9,
+    title:"The Park",
+    image:"image9.png",
+    description:"For the first time, the distance disappears.",
+    paragraphs:[
+      "Then came the day they finally met again.",
+      "Not through a screen. Not through a phone. Not through a voice.",
+      "In person.",
+      "A park.",
+      "The afternoon was peaceful. Trees moved gently in the wind. People walked past. Children laughed somewhere in the distance.",
+      "And then—there she was.",
+      "He had imagined this moment so many times.",
+      "But imagination hadn't prepared him for reality.",
+      "For a few seconds, neither knew what to say.",
+      "Then they smiled.",
+      "The awkwardness disappeared.",
+      "They started talking.",
+      "And suddenly it felt familiar. Like they had never been apart.",
+      "They walked. They laughed. They talked about everything.",
+      "They gave each other chocolates. Small gifts.",
+      "Nothing expensive. Nothing extraordinary.",
+      "But years later, those tiny things would matter more than anything expensive ever could.",
+      "Because that day wasn't about the chocolate.",
+      "It was about finally being close enough to hand it to each other.",
+      "For a moment—the distance didn't exist."
+    ]
+  },
+
+  {
+    number:10,
+    title:"When Love Hurts",
+    image:"image10.png",
+    description:"Love is not only made of beautiful days.",
+    paragraphs:[
+      "But love isn't only made of beautiful days.",
+      "Months later—an argument began.",
+      "Maybe it started with something small.",
+      "A misunderstanding. A message interpreted differently. A feeling that wasn't explained properly.",
+      "Then another sentence. Another response. Another misunderstanding.",
+      "Until the original problem didn't even matter anymore.",
+      "Only the hurt remained.",
+      "They were both angry. Both emotional. Both convinced they were being misunderstood.",
+      "Neither wanted to hurt the other.",
+      "Yet both did.",
+      "Eventually—the words came.",
+      "Maybe we should break up.",
+      "Silence.",
+      "Those words looked so small on a screen.",
+      "But they carried the weight of everything.",
+      "They broke apart."
+    ]
+  },
+
+  {
+    number:11,
+    title:"Choosing Each Other Again",
+    image:"image11.png",
+    description:"Honesty, forgiveness and the decision to try again.",
+    paragraphs:[
+      "The days afterward were strange.",
+      "He missed her. She missed him.",
+      "But pride stood between them.",
+      "Then one conversation began.",
+      "Not an argument. Not blame.",
+      "Just honesty.",
+      "They talked. Really talked.",
+      "They explained what had happened.",
+      "They admitted where they were wrong.",
+      "They listened.",
+      "They cried.",
+      "They forgave.",
+      "And somewhere between those conversations, they realized something:",
+      "They still loved each other.",
+      "The breakup hadn't erased it. The anger hadn't erased it. The distance hadn't erased it.",
+      "So they chose each other again.",
+      "Their relationship returned.",
+      "And perhaps they appreciated those ordinary moments more than before."
+    ]
+  },
+
+  {
+    number:12,
+    title:"The Anniversary That Never Happened",
+    image:"image12.png",
+    description:"A date meant to be celebrated passes in silence.",
+    paragraphs:[
+      "Then came their longest fight.",
+      "This time, it wasn't a few hours.",
+      "It wasn't a day.",
+      "It stretched on.",
+      "Silence became heavier.",
+      "Messages weren't sent. Calls weren't answered.",
+      "And somewhere during that silence—their first anniversary arrived.",
+      "A date that was supposed to be special.",
+      "A date they were supposed to celebrate.",
+      "But instead—there was nothing.",
+      "No call. No celebration. No shared laughter.",
+      "Just silence.",
+      "He looked at the date.",
+      "She probably did too.",
+      "Both remembered. Both cared.",
+      "Neither knew how to cross the distance.",
+      "Eventually, they talked again.",
+      "Slowly. Carefully.",
+      "They sorted things out.",
+      "They returned to each other.",
+      "But somewhere underneath the happiness—the cracks remained.",
+      "Invisible.",
+      "Not gone."
+    ]
+  },
+
+  {
+    number:13,
+    title:"The Cycle",
+    image:"image13.png",
+    description:"Love becomes trapped inside a repeating pattern.",
+    paragraphs:[
+      "Then it happened again.",
+      "An argument.",
+      "Then another.",
+      "Fight.",
+      "Silence.",
+      "Block.",
+      "Unblock.",
+      "Talk.",
+      "Fight.",
+      "Silence.",
+      "Block.",
+      "Unblock.",
+      "Again.",
+      "And again.",
+      "Every time they returned to each other, they believed: This time will be different.",
+      "Sometimes it was.",
+      "For a while.",
+      "But old wounds don't disappear simply because two people say sorry.",
+      "Some words stay. Some memories stay. Some fears stay.",
+      "He would reread old conversations.",
+      "She would stare at a blocked contact.",
+      "Both waiting. Both hurting. Both wondering who should take the first step.",
+      "There was love. But there was also exhaustion.",
+      "They weren't villains. They weren't enemies.",
+      "They were two people who loved each other but had slowly become trapped inside patterns they didn't know how to escape."
+    ]
+  },
+
+  {
+    number:14,
+    title:"One More Time",
+    image:"image14.png",
+    description:"They return to each other, but the past has left scars.",
+    paragraphs:[
+      "After another separation—they came back.",
+      "Again.",
+      "They talked. They resolved things. They promised to try.",
+      "And for a while—it felt beautiful again.",
+      "Calls. Laughter. Random conversations. Daily updates.",
+      "Did you eat?",
+      "How are you feeling?",
+      "Tell me what happened today.",
+      "The little things returned.",
+      "The love was still there.",
+      "The care was still there.",
+      "The friendship was still there.",
+      "But something was different.",
+      "The past had left scars.",
+      "Even when they laughed—some memories remained underneath.",
+      "They had repaired the relationship.",
+      "But they hadn't completely repaired themselves.",
+      "And that difference would eventually matter."
+    ]
+  },
+
+  {
+    number:15,
+    title:"The Hardest Goodbye",
+    image:"image15.png",
+    description:"He asks the question that love alone cannot answer.",
+    paragraphs:[
+      "The boy sat alone one night.",
+      "His phone was in his hand.",
+      "Their old conversations were open.",
+      "He scrolled upward.",
+      "And upward.",
+      "Past the arguments. Past the breakups. Past the apologies. Past the misunderstandings.",
+      "Until he reached the beginning.",
+      "The wedding.",
+      "The first conversations.",
+      "The friendship.",
+      "The moment she became his best friend.",
+      "The night they found each other again.",
+      "31st August. 2:00 AM.",
+      "The confession.",
+      "The first I love you.",
+      "The calls. The late nights. The park. The chocolates.",
+      "The laughter. The fights. The first breakup. The reconciliation.",
+      "The anniversary they never celebrated.",
+      "Everything was still there.",
+      "And then the question came.",
+      "Not: Do I love her?",
+      "He already knew the answer.",
+      "Yes.",
+      "He loved her.",
+      "Deeply.",
+      "The real question was: Is loving her enough?",
+      "No answer.",
+      "He wanted to stay. Every part of him wanted to stay.",
+      "But he was afraid.",
+      "Afraid that if they continued like this, the relationship would slowly hurt the very person he loved.",
+      "And perhaps—himself too.",
+      "Sometimes you don't leave because you stopped loving someone."
+    ]
+  },
+
+  {
+    number:16,
+    title:"The Memory That Never Got an Answer",
+    image:"image16.png",
+    final:true,
+    description:"Some questions are meant to remain unanswered.",
+    paragraphs:[
+      "The boy sits alone beside his bedroom window.",
+      "His phone lies beside him.",
+      "On the screen is an old photograph of her.",
+      "He looks at it for a long moment.",
+      "A very small smile appears through the tears.",
+      "The memories slowly disappear.",
+      "Outside the window, the city continues living.",
+      "Cars move.",
+      "Lights shine.",
+      "Life continues.",
+      "He reaches toward his phone.",
+      "Then stops.",
+      "And somewhere in that quiet moment, one question remains.",
+      "Does she still love him?",
+      "There is no answer.",
+      "The story doesn't give one.",
+      "Maybe some memories are not meant to provide closure.",
+      "Maybe some people remain important even when the story changes.",
+      "Maybe love can remain real even when two people no longer know what comes next."
+    ]
+  }
+
+];
+
+
+/* =====================================================
+   DOM
+====================================================== */
+
+const landing =
+  document.getElementById("landing");
+
+const storyIndex =
+  document.getElementById("storyIndex");
+
+const chapterView =
+  document.getElementById("chapterView");
+
+const aboutPage =
+  document.getElementById("aboutPage");
+
+const chapterGrid =
+  document.getElementById("chapterGrid");
+
+const passwordInput =
+  document.getElementById("passwordInput");
+
+const passwordCard =
+  document.getElementById("passwordCard");
+
+const passwordError =
+  document.getElementById("passwordError");
+
+const chapterImage =
+  document.getElementById("chapterImage");
+
+const chapterTitle =
+  document.getElementById("chapterTitle");
+
+const chapterKicker =
+  document.getElementById("chapterKicker");
+
+const storyContent =
+  document.getElementById("storyContent");
+
+const progress =
+  document.getElementById("progress");
+
+const prevBtn =
+  document.getElementById("prevBtn");
+
+const nextBtn =
+  document.getElementById("nextBtn");
+
+const transition =
+  document.getElementById("transition");
+
+const reviewForm =
+  document.getElementById("reviewForm");
+
+const reviewInput =
+  document.getElementById("reviewInput");
+
+const reviewList =
+  document.getElementById("reviewList");
+
+
+let currentChapter = 0;
+
+
+/* =====================================================
+   PARTICLES
+====================================================== */
+
+function createParticles(){
+
+  const container =
+    document.getElementById("particles");
+
+  const fragment =
+    document.createDocumentFragment();
+
+  for(let i=0;i<30;i++){
+
+    const p =
+      document.createElement("div");
+
+    p.className="particle";
+
+    p.style.left =
+      Math.random()*100+"%";
+
+    p.style.animationDuration =
+      (10+Math.random()*18)+"s";
+
+    p.style.animationDelay =
+      (-Math.random()*20)+"s";
+
+    p.style.opacity =
+      .15+Math.random()*.55;
+
+    fragment.appendChild(p);
+  }
+
+  container.appendChild(fragment);
+}
+
+
+/* =====================================================
+   HEART PARTICLES
+====================================================== */
+
+function createHeartParticles(){
+
+  for(let i=0;i<18;i++){
+
+    const heart =
+      document.createElement("div");
+
+    heart.className="heart-particle";
+
+    heart.textContent="♥";
+
+    heart.style.left =
+      Math.random()*100+"%";
+
+    heart.style.animationDuration =
+      (7+Math.random()*8)+"s";
+
+    heart.style.animationDelay =
+      (-Math.random()*15)+"s";
+
+    heart.style.fontSize =
+      (8+Math.random()*10)+"px";
+
+    aboutPage.appendChild(heart);
+  }
+}
+
+
+/* =====================================================
+   TRANSITION
+====================================================== */
+
+function cinematicTransition(callback){
+
+  transition.classList.add("active");
+
+  setTimeout(callback,250);
+
+  setTimeout(()=>{
+    transition.classList.remove("active");
+  },550);
+}
+
+
+/* =====================================================
+   SHOW STORY INDEX
+====================================================== */
+
+function showStoryIndex(){
+
+  landing.classList.add("hidden");
+  chapterView.classList.add("hidden");
+  aboutPage.classList.add("hidden");
+
+  storyIndex.classList.remove("hidden");
+
+  window.scrollTo({
+    top:0,
+    behavior:"instant"
+  });
+}
+
+
+/* =====================================================
+   BUILD INDEX
+====================================================== */
+
+function buildChapterIndex(){
+
+  chapterGrid.innerHTML="";
+
+  const fragment =
+    document.createDocumentFragment();
+
+  chapters.forEach((chapter,index)=>{
+
+    const card =
+      document.createElement("div");
+
+    card.className="chapter-card fade-in";
+
+    card.style.animationDelay =
+      `${Math.min(index*.035,.5)}s`;
+
+    card.innerHTML=`
+
+      <img
+        src="${chapter.image}"
+        alt="Artwork for ${chapter.title}"
+        loading="lazy"
+      >
+
+      <div class="card-overlay">
+
+        <div class="card-number">
+          ${
+            chapter.final
+              ? "FINAL CHAPTER"
+              : "CHAPTER "+
+                String(chapter.number).padStart(2,"0")
+          }
+        </div>
+
+        <h2>${chapter.title}</h2>
+
+        <p>${chapter.description}</p>
+
+        <div class="read-label">
+          READ CHAPTER →
+        </div>
+
+      </div>
+    `;
+
+    card.addEventListener(
+      "click",
+      ()=>openChapter(index)
+    );
+
+    fragment.appendChild(card);
+
+  });
+
+
+  /* Special page */
+
+  const special =
+    document.createElement("div");
+
+  special.className =
+    "special-card fade-in";
+
+  special.innerHTML=`
+
+    <div class="special-card-content">
+
+      <div class="special-icon">
+        🦚
+      </div>
+
+      <h2>
+        WHAT I THINK ABOUT HER
+      </h2>
+
+      <p>
+        A little piece of what I
+        actually think when I look at her.
+      </p>
+
+      <div class="read-label">
+        OPEN MEMORY →
+      </div>
+
+    </div>
+  `;
+
+  special.addEventListener(
+    "click",
+    openAboutPage
+  );
+
+  fragment.appendChild(special);
+
+  chapterGrid.appendChild(fragment);
+}
+
+
+/* =====================================================
+   OPEN CHAPTER
+====================================================== */
+
+function openChapter(index){
+
+  if(
+    index<0 ||
+    index>=chapters.length
+  ){
+    return;
+  }
+
+  currentChapter=index;
+
+  cinematicTransition(()=>{
+
+    landing.classList.add("hidden");
+    storyIndex.classList.add("hidden");
+    aboutPage.classList.add("hidden");
+
+    chapterView.classList.remove("hidden");
+
+    renderChapter();
+
+    window.scrollTo({
+      top:0,
+      behavior:"instant"
+    });
+
+  });
+}
+
+
+/* =====================================================
+   RENDER CHAPTER
+====================================================== */
+
+function renderChapter(){
+
+  const chapter =
+    chapters[currentChapter];
+
+  chapterImage.src =
+    chapter.image;
+
+  chapterImage.alt =
+    `Chapter artwork: ${chapter.title}`;
+
+  chapterKicker.textContent =
+    chapter.final
+      ? "FINAL CHAPTER"
+      : `CHAPTER ${chapter.number}`;
+
+  chapterTitle.textContent =
+    chapter.title;
+
+  progress.textContent =
+    `${chapter.final
+      ? "FINAL CHAPTER"
+      : "CHAPTER "+
+        String(chapter.number).padStart(2,"0")
+    } / 16`;
+
+  storyContent.innerHTML="";
+
+  const fragment =
+    document.createDocumentFragment();
+
+  chapter.paragraphs.forEach(text=>{
+
+    const p =
+      document.createElement("p");
+
+    p.textContent=text;
+
+    if(
+      text.length<60 &&
+      (
+        text.includes("He loved her") ||
+        text.includes("No answer") ||
+        text.includes("Just silence") ||
+        text.includes("The connection was real") ||
+        text.includes("strangers and friends") ||
+        text.includes("Not gone") ||
+        text.includes("They were together") ||
+        text.includes("Then—the notification appeared")
+      )
+    ){
+      p.classList.add("emphasis");
+    }
+
+    fragment.appendChild(p);
+
+  });
+
+
+  if(chapter.final){
+
+    const ending =
+      document.createElement("div");
+
+    ending.className="final-ending";
+
+    ending.innerHTML=`
+
+      <p>
+        Some questions are meant to remain unanswered.
+      </p>
+
+      <p>
+        And some people remain a part of us,
+        even after the story changes.
+      </p>
+    `;
+
+    fragment.appendChild(ending);
+  }
+
+
+  storyContent.appendChild(fragment);
+
+  prevBtn.disabled =
+    currentChapter===0;
+
+  nextBtn.disabled =
+    currentChapter===chapters.length-1;
+
+  nextBtn.textContent =
+    currentChapter===chapters.length-1
+      ? "Final Chapter"
+      : "Next →";
+
+}
+
+
+/* =====================================================
+   NEXT / PREVIOUS
+====================================================== */
+
+nextBtn.addEventListener(
+  "click",
+  ()=>{
+
+    if(
+      currentChapter<
+      chapters.length-1
+    ){
+
+      cinematicTransition(()=>{
+
+        currentChapter++;
+
+        renderChapter();
+
+        window.scrollTo({
+          top:0,
+          behavior:"instant"
+        });
+
+      });
+
+    }
+
+  }
+);
+
+
+prevBtn.addEventListener(
+  "click",
+  ()=>{
+
+    if(currentChapter>0){
+
+      cinematicTransition(()=>{
+
+        currentChapter--;
+
+        renderChapter();
+
+        window.scrollTo({
+          top:0,
+          behavior:"instant"
+        });
+
+      });
+
+    }
+
+  }
+);
+
+
+/* =====================================================
+   BACK BUTTON
+====================================================== */
+
+document
+  .getElementById("backToStory")
+  .addEventListener(
+    "click",
+    showStoryIndex
+  );
+
+
+document
+  .getElementById("aboutBack")
+  .addEventListener(
+    "click",
+    showStoryIndex
+  );
+
+
+/* =====================================================
+   OPEN ABOUT PAGE
+====================================================== */
+
+function openAboutPage(){
+
+  cinematicTransition(()=>{
+
+    landing.classList.add("hidden");
+    storyIndex.classList.add("hidden");
+    chapterView.classList.add("hidden");
+
+    aboutPage.classList.remove("hidden");
+
+    window.scrollTo({
+      top:0,
+      behavior:"instant"
+    });
+
+  });
+}
+
+
+/* =====================================================
+   PASSWORD
+====================================================== */
+
+function checkPassword(){
+
+  const value =
+    passwordInput.value.trim();
+
+  if(value===CORRECT_PASSWORD){
+
+    passwordError.textContent="";
+
+    cinematicTransition(()=>{
+
+      landing.classList.add("hidden");
+
+      storyIndex.classList.remove("hidden");
+
+      buildChapterIndex();
+
+      window.scrollTo({
+        top:0,
+        behavior:"instant"
+      });
+
+    });
+
+  }else{
+
+    passwordError.textContent =
+      "That isn't the memory I'm looking for...";
+
+    passwordCard.classList.remove("shake");
+
+    void passwordCard.offsetWidth;
+
+    passwordCard.classList.add("shake");
+
+  }
+}
+
+
+document
+  .getElementById("enterBtn")
+  .addEventListener(
+    "click",
+    checkPassword
+  );
+
+
+passwordInput.addEventListener(
+  "keydown",
+  event=>{
+
+    if(event.key==="Enter"){
+      checkPassword();
+    }
+
+  }
+);
+
+
+/* =====================================================
+   REVIEWS / LOCAL STORAGE
+====================================================== */
+
+const REVIEW_KEY =
+  "distance_between_two_hearts_reviews";
+
+
+function getReviews(){
+
+  try{
+
+    const saved =
+      localStorage.getItem(REVIEW_KEY);
+
+    return saved
+      ? JSON.parse(saved)
+      : [];
+
+  }catch(error){
+
+    return [];
+
+  }
+}
+
+
+function saveReviews(reviews){
+
+  try{
+
+    localStorage.setItem(
+      REVIEW_KEY,
+      JSON.stringify(reviews)
+    );
+
+  }catch(error){
+
+    console.warn(
+      "Reviews could not be saved.",
+      error
+    );
+
+  }
+}
+
+
+function escapeHTML(value){
+
+  const div =
+    document.createElement("div");
+
+  div.textContent=value;
+
+  return div.innerHTML;
+}
+
+
+function renderReviews(){
+
+  const reviews =
+    getReviews();
+
+  reviewList.innerHTML="";
+
+  if(!reviews.length){
+
+    reviewList.innerHTML=`
+      <div class="no-reviews">
+        No reviews yet. Be the first to leave one.
+      </div>
+    `;
+
+    return;
+  }
+
+
+  const fragment =
+    document.createDocumentFragment();
+
+  [...reviews]
+    .reverse()
+    .forEach(review=>{
+
+      const item =
+        document.createElement("div");
+
+      item.className="review";
+
+      const date =
+        new Date(review.date);
+
+      item.innerHTML=`
+
+        <div class="review-meta">
+
+          <strong>
+            A Reader
+          </strong>
+
+          <span>
+            ${date.toLocaleDateString(
+              undefined,
+              {
+                day:"numeric",
+                month:"short",
+                year:"numeric"
+              }
+            )}
+          </span>
+
+        </div>
+
+        <p>
+          ${escapeHTML(review.text)}
+        </p>
+
+      `;
+
+      fragment.appendChild(item);
+
+    });
+
+  reviewList.appendChild(fragment);
+}
+
+
+reviewForm.addEventListener(
+  "submit",
+  event=>{
+
+    event.preventDefault();
+
+    const text =
+      reviewInput.value.trim();
+
+    if(!text){
+      return;
+    }
+
+    const reviews =
+      getReviews();
+
+    reviews.push({
+
+      text:text,
+
+      date:new Date().toISOString()
+
+    });
+
+    saveReviews(reviews);
+
+    reviewInput.value="";
+
+    renderReviews();
+
+  }
+);
+
+
+/* =====================================================
+   KEYBOARD NAVIGATION
+====================================================== */
+
+document.addEventListener(
+  "keydown",
+  event=>{
+
+    if(
+      !chapterView.classList.contains("hidden")
+    ){
+
+      if(
+        event.key==="ArrowRight" &&
+        currentChapter<
+        chapters.length-1
+      ){
+        nextBtn.click();
+      }
+
+      if(
+        event.key==="ArrowLeft" &&
+        currentChapter>0
+      ){
+        prevBtn.click();
+      }
+
+      if(event.key==="Escape"){
+        showStoryIndex();
+      }
+
+    }
+
+  }
+);
+
+
+/* =====================================================
+   IMAGE ERROR
+====================================================== */
+
+chapterImage.addEventListener(
+  "error",
+  ()=>{
+
+    chapterImage.alt =
+      "Image unavailable. " +
+      "Place image1.png through image16.png " +
+      "in the same folder as this HTML file.";
+
+  }
+);
+
+
+/* =====================================================
+   INITIALIZE
+====================================================== */
+
+createParticles();
+
+createHeartParticles();
+
+renderReviews();
+
+</script>
+
+</body>
+</html>
